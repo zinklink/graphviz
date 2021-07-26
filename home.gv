@@ -1,0 +1,40 @@
+graph G {
+    node [shape=none, height=1.2]
+    rankdir=LR
+
+    // Modems
+    node [labelloc="b", image="icons/modem.png"] {
+        "Modem 1"
+        "Modem 2"
+    }
+
+    // Routers
+    node [labelloc="b", image="icons/atm router.png"] {
+        "Router"
+    }
+
+    // Switches
+    node [labelloc="b", image="icons/atm switch.png"] {
+        "Switch"
+    }
+
+    // Access Points
+    node [labelloc="b", image="icons/wireless router.png"] {
+        "AP 1"
+        "AP 2"
+    }
+
+    // Sub-networks
+    node [labelloc="c", image="icons/cloud.png"] {
+        "WAN"
+    }
+
+    // Relationships
+    "WAN" -- {"Modem 1", "Modem 2"} {
+        {"Modem 1", "Modem 2"} -- "Router" {
+            "Router" -- "Switch" {
+                "Switch" -- {"AP 1", "AP 2"}
+            }
+        }
+    }
+}
