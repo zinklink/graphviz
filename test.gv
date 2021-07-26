@@ -1,0 +1,52 @@
+graph G {
+
+    //node [labelloc="Router", image="icons/atm router.png"]
+    node [shape=none,height=1.5,fontsize=14,fontname="Futura"];
+    //rankdir=LR
+    //edge [style=dashed]
+    
+    //GPON
+    node [labelloc="b",image="icons/modem.png"]{"GPON"}
+    node [labelloc="b",image="icons/router.png"]{"Router"}
+    node [labelloc="b",image="icons/atm switch.png"]{"HP Switch","2F和室switch","PoE switch","AirPort Extreme","100M switch"}
+    node [labelloc="b",image="icons/pda.png"]{"iPhone 11","iPad air"}
+    node [labelloc="b",image="icons/rpi.png"]{"RPi 3B","RPi 4","RPi 3B+","RPi 2B"}
+    node [labelloc="b",image="icons/wifi.png"]{"Unifi AP-Lite","Google AP","Unifi 6 lite","1F TP-link AP"}
+    node [labelloc="b",image="icons/pc.png"]{"Mac mini 2012","Mac mini 2018"}
+    
+    "Internet" -- "GPON"
+    "GPON" -- "Router"
+    "GPON" -- "DVR"
+    "Router" -- "HP Switch"
+    // 3F
+    "HP Switch" -- "Mac mini 2012"
+    "HP Switch" -- "3F PC"
+    "HP Switch" -- {"Unifi AP-Lite","Google AP"}
+    "HP Switch" -- {"RPi 3B","RPi 4","NAS","docker"}
+    "HP Switch" -- "2F和室switch" [style=bold]
+    "HP Switch" -- "AirPort Extreme" [style=bold]
+
+    //2F
+    "2F和室switch" -- "PoE switch" [style=bold]
+    "2F和室switch" -- "1F TP-link AP"
+
+    "PoE switch" -- "Mac mini 2018"
+    "PoE switch" -- "Unifi 6 lite"
+
+    "Unifi 6 lite" -- {"Google TV","iPhone 11","iPad air"} [style=dashed]
+
+    //1F
+    "1F TP-link AP" -- "SONY TV"
+
+    //4F
+    "AirPort Extreme" -- "planefiner"
+    "AirPort Extreme" -- "100M switch"
+
+    "100M switch" -- "FlightAware"
+    "100M switch" -- "RPi 3B+"
+    "100M switch" -- "RPi 2B"
+
+
+
+    
+}
